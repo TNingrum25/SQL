@@ -31,3 +31,12 @@ Feb 6 class
         <author id="5">Herman Melville</author>
     </book>
 </books>
+
+Create Table
+
+CREATE TABLE Books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author_id INT,
+    FOREIGN KEY (author_id) REFERENCES Authors(id)
+);
