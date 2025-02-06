@@ -4,3 +4,30 @@ SELECT TOP 5 BusinessEntityID, FirstName, LastName
 FROM Person.Person  
 WHERE FirstName = 'John'  
 FOR XML PATH('Person'), ROOT('Persons');
+
+
+Feb 6 class
+
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>The Great Gatsby</title>
+        <author id="1">F. Scott Fitzgerald</author>
+    </book>
+    <book>
+        <title>To Kill a Mockingbird</title>
+        <author id="2">Harper Lee</author>
+    </book>
+    <book>
+        <title>1984</title>
+        <author id="3">George Orwell</author>
+    </book>
+    <book>
+        <title>Pride and Prejudice</title>
+        <author id="4">Jane Austen</author>
+    </book>
+    <book>
+        <title>Moby-Dick</title>
+        <author id="5">Herman Melville</author>
+    </book>
+</books>
