@@ -1,4 +1,20 @@
-CREATE TABLE AddressData (
-    StreetAddress VARCHAR(255),
-    PostalZip VARCHAR(10)
+CREATE TABLE US_ZipCodes (
+    zip VARCHAR(10) PRIMARY KEY,
+    lat FLOAT,
+    lng FLOAT,
+    city VARCHAR(100),
+    state_id CHAR(2),
+    state_name VARCHAR(100),
+    zcta BIT,
+    parent_zcta VARCHAR(10),
+    population INT,
+    density FLOAT,
+    county_fips VARCHAR(10),
+    county_name VARCHAR(100),
+    county_weights TEXT,
+    county_names_all TEXT,
+    county_fips_all TEXT,
+    imprecise BIT,
+    military BIT,
+    timezone VARCHAR(50)
 );
