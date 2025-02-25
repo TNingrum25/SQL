@@ -1,0 +1,4 @@
+CREATE TABLE AddressData (
+    StreetAddress VARCHAR(255),
+    PostalZip VARCHAR(10)
+);
