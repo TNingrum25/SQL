@@ -1,0 +1,17 @@
+CREATE DATABASE MillionDollarSellers;
+GO
+
+USE MillionDollarSellers;
+GO
+
+CREATE TABLE PotentialBuyers (
+    ID INT PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Street NVARCHAR(255) NULL,
+    City NVARCHAR(100) NULL,
+    State NVARCHAR(100) NULL,
+    PhoneNumber NVARCHAR(20) NULL,
+    ZipCode NVARCHAR(20) NULL,
+    Country NVARCHAR(100) NULL
+);
+GO
