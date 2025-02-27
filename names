@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<People>
+    <Person>
+        <ID>01</ID>
+        <FirstName>Fayiz</FirstName>
+        <LastName>Beake</LastName>
+    </Person>
+    <Person>
+        <ID>02</ID>
+        <FirstName>Verena</FirstName>
+        <LastName>Renard</LastName>
+    </Person>
+    <Person>
+        <ID>03</ID>
+        <FirstName>Jasmin</FirstName>
+        <LastName>Zavala</LastName>
+    </Person>
+    <Person>
+        <ID>04</ID>
+        <FirstName>Jokin</FirstName>
+        <LastName>Zabala</LastName>
+    </Person>
+    <Person>
+        <ID>05</ID>
+        <FirstName>Yeter</FirstName>
+        <LastName>Wehner</LastName>
+    </Person>
+    <Person>
+        <ID>06</ID>
+        <FirstName>Lefteris</FirstName>
+        <LastName>Chamberlain</LastName>
+    </Person>
+</People>
