@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Addresses>
+    <Address>
+        <ID>06</ID>
+        <Street>4186 Diamond Cove</Street>
+        <City>Newport</City>
+        <State>Rhode Island</State>
+        <PhoneNumber>401-341-3121</PhoneNumber>
+        <ZipCode>02840</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+    <Address>
+        <ID>05</ID>
+        <Street>1736 Mandan Road</Street>
+        <City>Saint Louis</City>
+        <State>Missouri</State>
+        <PhoneNumber>573-844-2793</PhoneNumber>
+        <ZipCode>63101</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+    <Address>
+        <ID>04</ID>
+        <Street>3265 Hall Street</Street>
+        <City>Las Vegas</City>
+        <State>Nevada</State>
+        <PhoneNumber>702-453-5129</PhoneNumber>
+        <ZipCode>89110</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+    <Address>
+        <ID>03</ID>
+        <Street>3544 Vesta Drive</Street>
+        <City>Northbrook</City>
+        <State>Illinois</State>
+        <PhoneNumber>773-781-7760</PhoneNumber>
+        <ZipCode>60062</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+    <Address>
+        <ID>02</ID>
+        <Street>4126 Apple Lane</Street>
+        <City>Norman</City>
+        <State>Oklahoma</State>
+        <PhoneNumber>309-342-6871</PhoneNumber>
+        <ZipCode>73072</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+    <Address>
+        <ID>01</ID>
+        <Street>2612 Johnny Lane</Street>
+        <City>New Berlin</City>
+        <State>Wisconsin</State>
+        <PhoneNumber>414-232-5019</PhoneNumber>
+        <ZipCode>53151</ZipCode>
+        <CountryCallingCode>+1</CountryCallingCode>
+        <Country>United States</Country>
+    </Address>
+</Addresses>
