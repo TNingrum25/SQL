@@ -10,3 +10,7 @@ CREATE TABLE EmployeeHours (
     Week4Hours INT,
     HireDate DATE
 );
+
+(DT_WSTR,10)MONTH(hireDate) + "-" + 
+(DT_WSTR,10)DAY(hireDate) + "-" + 
+(DT_WSTR,10)YEAR(hireDate)
