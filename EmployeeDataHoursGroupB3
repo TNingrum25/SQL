@@ -1,0 +1,11 @@
+CREATE TABLE EmployeeData (
+    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    FullName AS (FirstName + ' ' + LastName) PERSISTED,
+    HireDate DATE,
+    Week1Hours INT,
+    Week2Hours INT,
+    Week3Hours INT,
+    Week4Hours INT
+);
