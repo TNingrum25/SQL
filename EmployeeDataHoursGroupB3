@@ -14,3 +14,5 @@ CREATE TABLE EmployeeHours (
 (DT_WSTR,10)MONTH(hireDate) + "-" + 
 (DT_WSTR,10)DAY(hireDate) + "-" + 
 (DT_WSTR,10)YEAR(hireDate)
+
+(DT_DATE)(SUBSTRING(HireDate, 7, 4) + "-" + SUBSTRING(HireDate, 1, 2) + "-" + SUBSTRING(HireDate, 4, 2))
