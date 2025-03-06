@@ -1,0 +1,11 @@
+Select ST.CountryRegionCode Region, LastName, FirstName, P.Name, SOD.UnitPrice, SOH.SalesOrderNumber, SOD.LineTotal as SalesAmount, OrderDate
+from Person.Person PP, Production.Product P, Sales.SalesOrderDetail SOD, Sales.SalesOrderHeader SOH, Sales.Customer C, Sales.SalesTerritory ST
+Where SOD.ProductID = P.ProductID
+	and SOH.SalesOrderID = SOD.SalesOrderID
+	and PP.BusinessEntityID = C.PersonID
+	and C.CustomerID = SOH.CustomerID
+	and ST.TerritoryID = SOH.TerritoryID
+	and P.Name like '%Sport-100 Helmet, Red%'
+	and OnlineOrderFlag = 1
+	and CurrencyRateID is null
+Order by ST.TerritoryID desc;
