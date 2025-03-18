@@ -1,0 +1,15 @@
+ALTER TABLE WorldContinents ADD COLUMN continent VARCHAR(100);
+
+
+UPDATE WorldContinents 
+SET continent = 
+    CASE 
+        WHEN country IN ('United States', 'Canada', 'Mexico') THEN 'North America'
+        WHEN country IN ('France', 'Germany', 'Italy', 'Spain') THEN 'Europe'
+        WHEN country IN ('Japan', 'China', 'India', 'South Korea') THEN 'Asia'
+        WHEN country IN ('Brazil', 'Argentina', 'Chile') THEN 'South America'
+        WHEN country IN ('Australia', 'New Zealand') THEN 'Australia'
+        WHEN country IN ('South Africa', 'Egypt', 'Nigeria') THEN 'Africa'
+        WHEN country IN ('Antarctica') THEN 'Antarctica'
+        ELSE 'Unknown'
+    END;
