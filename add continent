@@ -13,3 +13,17 @@ SET continent =
         WHEN country IN ('Antarctica') THEN 'Antarctica'
         ELSE 'Unknown'
     END;
+
+
+UPDATE WorldContinents 
+SET continent = 
+    CASE 
+        WHEN Name IN ('United States', 'Canada', 'Mexico', 'Guatemala', 'Cuba', 'Panama', 'Honduras', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Belize', 'Jamaica', 'Haiti', 'Dominican Republic', 'Trinidad and Tobago', 'Bahamas', 'Barbados') THEN 'North America'
+        WHEN Name IN ('France', 'Germany', 'Italy', 'Spain', 'United Kingdom', 'Netherlands', 'Sweden', 'Norway', 'Denmark', 'Finland', 'Poland', 'Czech Republic', 'Austria', 'Switzerland', 'Belgium', 'Portugal', 'Greece', 'Ireland', 'Hungary', 'Slovakia', 'Slovenia', 'Lithuania', 'Latvia', 'Estonia', 'Ukraine', 'Romania', 'Bulgaria', 'Serbia', 'Croatia', 'Bosnia and Herzegovina', 'Montenegro', 'Albania', 'North Macedonia', 'Moldova', 'Iceland', 'Luxembourg', 'Malta', 'Andorra', 'Liechtenstein', 'San Marino', 'Monaco', 'Vatican City') THEN 'Europe'
+        WHEN Name IN ('Japan', 'China', 'India', 'South Korea', 'Thailand', 'Indonesia', 'Vietnam', 'Pakistan', 'Bangladesh', 'Malaysia', 'Philippines', 'Myanmar', 'Sri Lanka', 'Nepal', 'Afghanistan', 'Kazakhstan', 'Uzbekistan', 'Turkmenistan', 'Tajikistan', 'Kyrgyzstan', 'Mongolia', 'Bhutan', 'Maldives', 'Brunei', 'Singapore') THEN 'Asia'
+        WHEN Name IN ('Brazil', 'Argentina', 'Chile', 'Peru', 'Colombia', 'Venezuela', 'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay', 'Guyana', 'Suriname', 'French Guiana') THEN 'South America'
+        WHEN Name IN ('Australia', 'New Zealand', 'Fiji', 'Papua New Guinea', 'Solomon Islands', 'Vanuatu', 'Samoa', 'Tonga', 'Kiribati', 'Tuvalu', 'Micronesia', 'Palau', 'Marshall Islands', 'Nauru') THEN 'Australia'
+        WHEN Name IN ('South Africa', 'Egypt', 'Nigeria', 'Kenya', 'Ghana', 'Ethiopia', 'Sudan', 'Algeria', 'Morocco', 'Angola', 'Cameroon', 'Democratic Republic of the Congo', 'Republic of the Congo', 'Madagascar', 'Mozambique', 'Zambia', 'Zimbabwe', 'Uganda', 'Tanzania', 'Rwanda', 'Burundi', 'Senegal', 'Mali', 'Niger', 'Chad', 'Burkina Faso', 'Togo', 'Benin', 'Sierra Leone', 'Liberia', 'Cote d'Ivoire', 'Gabon', 'Botswana', 'Namibia', 'Lesotho', 'Eswatini', 'Malawi', 'Seychelles', 'Mauritius', 'Comoros', 'Guinea', 'Guinea-Bissau', 'Eritrea', 'Djibouti', 'Central African Republic', 'Equatorial Guinea', 'The Gambia', 'Cape Verde', 'Somalia', 'South Sudan') THEN 'Africa'
+        WHEN Name IN ('Antarctica') THEN 'Antarctica'
+        ELSE 'Unknown'
+    END;
