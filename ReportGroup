@@ -1,1 +1,12 @@
 =IIF(RowNumber(Nothing) Mod 2 = 0, "LightGray", "White")
+
+SELECT 
+    BusinessEntityID,
+    MinOrderQty AS 'Min Order Qty',
+    MaxOrderQty AS 'Max Order Qty',
+    OnOrderQty AS 'On Order Qty'
+FROM Purchasing.ProductVendor
+WHERE BusinessEntityID NOT IN (
+    SELECT DISTINCT BusinessEntityID FROM Purchasing.ProductVendor WHERE OnOrderQty > 0
+);
+
