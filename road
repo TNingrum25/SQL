@@ -1,13 +1,14 @@
 CREATE TABLE RoadSales (
-    RoadSalesID INT PRIMARY KEY AUTO_INCREMENT,
-    ProductID INT,
-    Name VARCHAR(255),
-    OrderQty INT,
-    UnitPrice DECIMAL(10,2),
-    UnitPriceDiscount DECIMAL(10,2),
-    LineTotal DECIMAL(18,2),
-    FOREIGN KEY (ProductID) REFERENCES Production.Product(ProductID)
+    RoadSalesID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ProductID INT NOT NULL,
+    Name VARCHAR(255) NOT NULL,
+    OrderQty INT NOT NULL,
+    UnitPrice DECIMAL(10,2) NOT NULL,
+    UnitPriceDiscount DECIMAL(10,2) DEFAULT 0,
+    LineTotal DECIMAL(18,2) NOT NULL,
+    FOREIGN KEY (ProductID) REFERENCES Production.Product(ProductID) ON DELETE CASCADE
 );
+
 
 
 INSERT INTO RoadSales (ProductID, Name, OrderQty, UnitPrice, UnitPriceDiscount, LineTotal)
