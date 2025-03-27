@@ -1,0 +1,16 @@
+CREATE TABLE RoadSales (
+    RoadSalesID INT PRIMARY KEY AUTO_INCREMENT,
+    ProductID INT,
+    Name VARCHAR(255),
+    OrderQty INT,
+    UnitPrice DECIMAL(10,2),
+    UnitPriceDiscount DECIMAL(10,2),
+    LineTotal DECIMAL(18,2),
+    FOREIGN KEY (ProductID) REFERENCES Production.Product(ProductID)
+);
+
+
+INSERT INTO RoadSales (ProductID, Name, OrderQty, UnitPrice, UnitPriceDiscount, LineTotal)
+SELECT p.ProductID, p.Name, sd.OrderQty, sd.UnitPrice, sd.UnitPriceDiscount, sd.LineTotal
+FROM Production.Product p
+JOIN Sales.SalesOrderDetail sd ON p.ProductID = sd.ProductID;
