@@ -1,0 +1,50 @@
+CREATE DATABASE CanyonRetailDW2;
+USE CanyonRetailDW2;
+
+
+CREATE TABLE Calendar (
+    calendar_id VARCHAR(10) PRIMARY KEY,
+    full_date DATETIME,
+    day_of_week VARCHAR(10),
+    day_of_month INT,
+    month_of_sale INT,
+    quarter_of_sale INT,
+    year_of_sale INT
+);
+
+
+CREATE TABLE Store (
+    store_id INT PRIMARY KEY,
+    store_zip VARCHAR(10),
+    store_region VARCHAR(50)
+);
+
+
+CREATE TABLE Product (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100),
+    price DECIMAL(10,2),
+    vendor VARCHAR(100),
+    category VARCHAR(100)
+);
+
+
+CREATE TABLE Customer (
+    customer_id VARCHAR(10) PRIMARY KEY,
+    full_name VARCHAR(100),
+    store_zip VARCHAR(10)
+);
+
+
+CREATE TABLE Sales (
+    dollar_sold DECIMAL(10,2),
+    unit_sold INT,
+    calendar_id VARCHAR(10),
+    store_id INT,
+    product_id INT,
+    customer_id VARCHAR(10),
+    FOREIGN KEY (calendar_id) REFERENCES Calendar(calendar_id),
+    FOREIGN KEY (store_id) REFERENCES Store(store_id),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id),
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
