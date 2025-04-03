@@ -48,3 +48,15 @@ CREATE TABLE Sales (
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
 );
+
+
+INSERT INTO CanyonRetailDW2.Calendar (calendar_id, full_date, day_of_week, day_of_month, month_of_sale, quarter_of_sale, year_of_sale)
+SELECT 
+    calendar_id, full_date, day_of_week, day_of_month, month_of_sale, quarter_of_sale, year_of_sale
+FROM CanyonRetailOperations.Calendar;
+
+
+INSERT INTO CanyonRetailDW2.Store (store_id, store_zip, store_region)
+SELECT 
+    store_id, store_zip, store_region
+FROM CanyonRetailOperations.Store;
