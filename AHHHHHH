@@ -60,3 +60,31 @@ GROUP BY
 
 ALTER TABLE Orders
 ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
+
+
+USE SalesDatabase;
+
+INSERT INTO Sales (dollar_sold, unit_sold, store_id, calendar_id, product_id, customer_id)
+SELECT 
+    SUM(s.Quantity * p.Price) AS dollar_sold,
+    s.Quantity AS unit_sold,
+    st.store_id, 
+    c.calendar_id, 
+    p.product_id,
+    cu.customer_id
+FROM 
+    SoldVia s
+JOIN 
+    Product p ON s.product_id = p.product_id
+JOIN 
+    Store st ON s.store_id = st.store_id  -- If store_id is not directly in SoldVia
+JOIN 
+    Calendar c ON s.calendar_id = c.calendar_id  -- If calendar_id is not directly in SoldVia
+JOIN 
+    Customer cu ON s.customer_id = cu.customer_id  -- If customer_id is not directly in SoldVia
+GROUP BY 
+    st.store_id, 
+    c.calendar_id, 
+    p.product_id, 
+    cu.customer_id;
+
