@@ -37,6 +37,10 @@ FROM SalesTransaction
 WHERE TransactionDate IS NOT NULL;
 
 
+ALTER TABLE Orders
+ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
+
+
 CREATE TABLE calendar (
     calendar_id VARCHAR(5) PRIMARY KEY,
     full_date DATE,  -- Using DATE instead of DATETIME since time is always 00:00:00
