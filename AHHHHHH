@@ -5,3 +5,9 @@ CREATE TABLE ProductDim (
     VendorName VARCHAR(100),
     CategoryName VARCHAR(100)
 );
+DATE_FORMAT(TransactionDate, '%Y%m%d') AS CalendarKey,
+    TransactionDate AS FullDate,
+    DAYNAME(TransactionDate) AS DayOfWeek,
+    MONTHNAME(TransactionDate) AS Month,
+    CONCAT('Q', QUARTER(TransactionDate)) AS Quarter,
+    YEAR(TransactionDate) AS Year
