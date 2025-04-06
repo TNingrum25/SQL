@@ -40,6 +40,23 @@ WHERE TransactionDate IS NOT NULL;
 ALTER TABLE Orders
 ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
 
+CREATE TABLE TotalDollar (
+    ProductID INT,
+    dollarSold DECIMAL(10,2)
+);
+
+INSERT INTO TotalDollar (ProductID, dollarSold)
+SELECT 
+    p.ProductID,
+    SUM(s.Quantity * p.Price) AS dollarSold
+FROM 
+    Product p
+JOIN 
+    SoldVia s ON p.ProductID = s.ProductID
+GROUP BY 
+    p.ProductID;
+
+
 
 ALTER TABLE Orders
 ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
