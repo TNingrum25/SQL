@@ -38,3 +38,22 @@ INSERT INTO Sales (dollar_sold, units_sold, calendar_id, store_id, product_id, c
 (300.00, 3, 'C007', 'S2', '1', '4'),
 (30.00, 2, 'C007', 'S2', '3', '4');
 (1050.00, 7, 'C007', 'S2', '5', '4');
+
+
+Calendar = 
+VAR EndYear = YEAR(TODAY()) - 1
+VAR StartYear = EndYear - 1
+VAR StartDate = DATE(StartYear, 1, 1)
+VAR EndDate = DATE(EndYear, 12, 31)
+
+RETURN
+ADDCOLUMNS(
+    CALENDAR(StartDate, EndDate),
+    "Month", FORMAT([Date], "MMMM"),
+    "Year", YEAR([Date]),
+    "Month Number", MONTH([Date]),
+    "Week Number", INT((DATEDIFF(DATE(YEAR([Date]),1,1), [Date], DAY) / 7) + 1),
+    "Weekday", FORMAT([Date], "dddd"),
+    "Weekday Number", WEEKDAY([Date], 1),  -- Sunday = 1, Saturday = 7
+    "Workday", IF(WEEKDAY([Date], 2) <= 5, 1, 0) -- Monday = 1, Sunday = 7
+)
