@@ -168,3 +168,6 @@ GROUP BY
     st.StoreID, 
     p.ProductID, 
     st.CustomerID;  -- Grouping by foreign keys to calculate dollar_sold and unit_sold
+
+Msg 8120, Level 16, State 1, Line 6
+Column 'CanyonRetailOperations.dbo.SoldVia.Quantity' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.
