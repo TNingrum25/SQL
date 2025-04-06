@@ -41,28 +41,5 @@ ALTER TABLE Orders
 ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
 
 
-CREATE TABLE calendar (
-    calendar_id VARCHAR(5) PRIMARY KEY,
-    full_date DATE,  -- Using DATE instead of DATETIME since time is always 00:00:00
-    day_of_week VARCHAR(10),
-    day_of_month VARCHAR(2),
-    month_of_sale VARCHAR(2),
-    quarter_of_sale INT,
-    year_of_sale INT
-);
-
-
-INSERT INTO calendar (calendar_id, full_date, day_of_week, day_of_month, month_of_sale, quarter_of_sale, year_of_sale)
-SELECT
-    'CD' + RIGHT('00' + CAST(ROW_NUMBER() OVER (ORDER BY TransactionDate) AS VARCHAR(3)), 3) AS calendar_id,
-    TransactionDate AS full_date,
-    DATENAME(WEEKDAY, TransactionDate) AS day_of_week,
-    RIGHT('0' + CAST(DAY(TransactionDate) AS VARCHAR(2)), 2) AS day_of_month,
-    RIGHT('0' + CAST(MONTH(TransactionDate) AS VARCHAR(2)), 2) AS month_of_sale,
-    DATEPART(QUARTER, TransactionDate) AS quarter_of_sale,
-    YEAR(TransactionDate) AS year_of_sale
-FROM (
-    SELECT DISTINCT TransactionDate
-    FROM SalesTransaction
-    WHERE TransactionDate IS NOT NULL
-) AS UniqueDates;
+ALTER TABLE Orders
+ADD CONSTRAINT FK_CustomerID FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID);
