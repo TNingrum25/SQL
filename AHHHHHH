@@ -23,3 +23,15 @@ SELECT DISTINCT
     YEAR(TransactionDate) AS year_of_sale
 FROM SalesTransaction
 WHERE TransactionDate IS NOT NULL;
+
+
+INSERT INTO calendar (full_date, day_of_week, day_of_month, month_of_sale, quarter_of_sale, year_of_sale)
+SELECT DISTINCT
+    TransactionDate AS full_date,
+    DATENAME(WEEKDAY, TransactionDate) AS day_of_week,
+    DAY(TransactionDate) AS day_of_month,
+    DATENAME(MONTH, TransactionDate) AS month_of_sale,
+    'Q' + CAST(DATEPART(QUARTER, TransactionDate) AS VARCHAR) AS quarter_of_sale,
+    YEAR(TransactionDate) AS year_of_sale
+FROM SalesTransaction
+WHERE TransactionDate IS NOT NULL;
