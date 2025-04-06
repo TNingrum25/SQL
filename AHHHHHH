@@ -140,3 +140,31 @@ GROUP BY
     st.store_id, 
     p.product_id, 
     st.customer_id;  -- Group by the necessary foreign keys
+
+
+
+INSERT INTO Sales (dollar_sold, unit_sold, calendar_id, store_id, product_id, customer_id)
+SELECT 
+    SUM(s.Quantity * p.Price) AS dollar_sold,  -- Calculate total dollar amount sold
+    s.Quantity AS unit_sold,  -- The quantity sold
+    cal.calendar_id,  -- Foreign key from Calendar table in CanyonRetailDW2
+    st.StoreID,  -- Foreign key from Store table in CanyonRetailDW2
+    p.ProductID,  -- Foreign key from Product table in CanyonRetailOperations
+    st.CustomerID  -- Foreign key from Customer table in CanyonRetailDW2
+FROM 
+    CanyonRetailOperations.dbo.SoldVia s  -- Referencing the SoldVia table from CanyonRetailOperations database
+JOIN 
+    CanyonRetailOperations.dbo.Product p ON s.ProductID = p.ProductID  -- Joining Product table from CanyonRetailOperations to get price
+JOIN 
+    CanyonRetailOperations.dbo.SalesTransaction st ON s.TransactionID = st.TransactionID
+Join
+	CanyonRetailDW2.dbo.calendarDim cal ON st.TransactionID = cal.calendar_id
+JOIN
+	CanyonRetailDW2.dbo.StoreDim sd ON st.StoreID = sd.StoreID
+--Join
+	--CanyonRetailDW2.dbo.Customer cu ON st.CustomerID = cu.customer_id
+GROUP BY 
+    cal.calendar_id, 
+    st.StoreID, 
+    p.ProductID, 
+    st.CustomerID;  -- Grouping by foreign keys to calculate dollar_sold and unit_sold
