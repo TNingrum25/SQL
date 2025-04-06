@@ -171,3 +171,42 @@ GROUP BY
 
 Msg 8120, Level 16, State 1, Line 6
 Column 'CanyonRetailOperations.dbo.SoldVia.Quantity' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause.
+
+INSERT INTO CanyonRetailDW2.dbo.Sales (
+    dollar_sold,
+    unit_sold,
+    calendar_id,
+    store_id,
+    product_id,
+    customer_id
+)
+SELECT 
+    SUM(s.Quantity * p.Price) AS dollar_sold,      -- total amount sold
+    SUM(s.Quantity) AS unit_sold,                  -- total quantity sold
+    st.CalendarID,                                 -- foreign key for calendar
+    st.StoreID,                                    -- foreign key for store
+    p.ProductID,                                   -- foreign key for product
+    st.CustomerID                                  -- foreign key for customer
+FROM 
+    CanyonRetailOperations.dbo.SoldVia s
+JOIN 
+    CanyonRetailOperations.dbo.Product p 
+    ON s.ProductID = p.ProductID
+JOIN 
+    CanyonRetailOperations.dbo.SalesTransaction st 
+    ON s.TransactionID = st.TransactionID
+JOIN 
+    CanyonRetailDW2.dbo.Calendar cal 
+    ON st.CalendarID = cal.calendar_id
+JOIN 
+    CanyonRetailDW2.dbo.Store sd 
+    ON st.StoreID = sd.store_id
+JOIN 
+    CanyonRetailDW2.dbo.Customer cu 
+    ON st.CustomerID = cu.customer_id
+GROUP BY 
+    st.CalendarID,
+    st.StoreID,
+    p.ProductID,
+    st.CustomerID;
+
