@@ -11,3 +11,15 @@ DATE_FORMAT(TransactionDate, '%Y%m%d') AS CalendarKey,
     MONTHNAME(TransactionDate) AS Month,
     CONCAT('Q', QUARTER(TransactionDate)) AS Quarter,
     YEAR(TransactionDate) AS Year
+
+
+INSERT INTO calendar (full_date, day_of_week, day_of_month, month_of_sale, quarter_of_sale, year_of_sale)
+SELECT DISTINCT
+    TransactionDate AS full_date,
+    DAYNAME(TransactionDate) AS day_of_week,
+    DAY(TransactionDate) AS day_of_month,
+    MONTHNAME(TransactionDate) AS month_of_sale,
+    CONCAT('Q', QUARTER(TransactionDate)) AS quarter_of_sale,
+    YEAR(TransactionDate) AS year_of_sale
+FROM SalesTransaction
+WHERE TransactionDate IS NOT NULL;
