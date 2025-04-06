@@ -35,3 +35,14 @@ SELECT DISTINCT
     YEAR(TransactionDate) AS year_of_sale
 FROM SalesTransaction
 WHERE TransactionDate IS NOT NULL;
+
+
+CREATE TABLE calendar (
+    calendar_id VARCHAR(5) PRIMARY KEY,
+    full_date DATE,  -- Using DATE instead of DATETIME since time is always 00:00:00
+    day_of_week VARCHAR(10),
+    day_of_month VARCHAR(2),
+    month_of_sale VARCHAR(2),
+    quarter_of_sale INT,
+    year_of_sale INT
+);
