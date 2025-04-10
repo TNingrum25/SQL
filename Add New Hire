@@ -60,3 +60,13 @@ BEGIN
 END;
 
 
+UPDATE Person.Person
+SET PersonType = 'IN'  -- Change from 'EM' (Employee) to 'IN' (Individual)
+WHERE BusinessEntityID = 292;
+
+
+SELECT *
+FROM PersonTypeAuditLog
+WHERE BusinessEntityID = 292;
+
+
