@@ -1,0 +1,30 @@
+INSERT INTO Person.Person (
+    BusinessEntityID,
+    PersonType,
+    NameStyle,
+    Title,
+    FirstName,
+    MiddleName,
+    LastName,
+    Suffix,
+    EmailPromotion,
+    AdditionalContactInfo,
+    Demographics,
+    rowguid,
+    ModifiedDate
+)
+VALUES (
+    292,
+    'EM',
+    0,
+    'Ms.',               -- Change to Ms. if needed
+    'Pratiwi',
+    NULL,
+    'Ningrum',
+    NULL,
+    0,
+    NULL,
+    NULL,
+    'D0A499A2-C226-43E9-AB06-F61543A71135',
+    CAST(GETDATE() - 1 AS DATE) -- Sets date to yesterday
+);
