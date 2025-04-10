@@ -33,3 +33,30 @@ VALUES (
 SELECT DISTINCT PersonType
 FROM Person.Person;
 
+CREATE TABLE PersonTypeAuditLog (
+    AuditID INT IDENTITY(1,1) PRIMARY KEY,
+    BusinessEntityID INT,
+    OldPersonType CHAR(2),
+    NewPersonType CHAR(2),
+    ChangeDate DATETIME DEFAULT GETDATE()
+);
+
+CREATE TRIGGER trg_PersonType_Audit
+ON Person.Person
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO PersonTypeAuditLog (BusinessEntityID, OldPersonType, NewPersonType, ChangeDate)
+    SELECT
+        i.BusinessEntityID,
+        d.PersonType,
+        i.PersonType,
+        GETDATE()
+    FROM inserted i
+    INNER JOIN deleted d ON i.BusinessEntityID = d.BusinessEntityID
+    WHERE i.PersonType <> d.PersonType;
+END;
+
+
