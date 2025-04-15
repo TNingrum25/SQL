@@ -90,3 +90,9 @@ Insert into SalespersonAuditLog values
 End  
 ;
 
+
+update Sales.SalesPerson
+set SalesQuota = Null
+where BusinessEntityID = 274;
+
+
