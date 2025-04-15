@@ -1,0 +1,4 @@
+INSERT INTO OriginalTable VALUES (1, 'Alice', 'Anderson', 'Austin');
+INSERT INTO OriginalTable VALUES (2, 'Bob', 'Best', 'Boston');
+INSERT INTO OriginalTable VALUES (3, 'Carrie', 'Conway', 'Chicago');
+INSERT INTO OriginalTable VALUES (4, 'David', 'Doe', 'Denver');
