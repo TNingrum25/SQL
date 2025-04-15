@@ -70,3 +70,23 @@ FROM OriginalTable
 WHERE SUBSTRING(LastName, 1, 1) = 'C' 
    OR SUBSTRING(LastName, 1, 1) = 'D';
 
+
+
+Create trigger SalespersonAuditLogTrig  
+on Sales.Salesperson after update  
+as  
+IF update(SalesQuota)  
+Begin  
+declare @salesQuotaOld money  
+declare @SalesQuotaNew money  
+declare @BusinessEntityID int  
+select @salesQuotaOld = (select SalesQuota from deleted)  
+select @SalesQuotaNew = (Select SalesQuota from inserted)  
+Select @BusinessEntityID = (Select BusinessEntityID  
+                            from deleted)  
+Insert into SalespersonAuditLog values  
+       (@BusinessEntityID, @salesQuotaOld, @SalesQuotaNew,  
+        GETDATE())  
+End  
+;
+
