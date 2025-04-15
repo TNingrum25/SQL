@@ -57,4 +57,11 @@ CREATE TABLE HorizontalShard2 (
 );
 GO
 
+INSERT INTO HorizontalShard1 (CustomerId, FirstName, LastName, City)
+SELECT CustomerId, FirstName, LastName, City
+FROM OriginalTable
+WHERE SUBSTRING(LastName, 1, 1) = 'A' 
+   OR SUBSTRING(LastName, 1, 1) = 'B';
+
+
 
