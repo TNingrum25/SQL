@@ -2,3 +2,22 @@ INSERT INTO OriginalTable VALUES (1, 'Alice', 'Anderson', 'Austin');
 INSERT INTO OriginalTable VALUES (2, 'Bob', 'Best', 'Boston');
 INSERT INTO OriginalTable VALUES (3, 'Carrie', 'Conway', 'Chicago');
 INSERT INTO OriginalTable VALUES (4, 'David', 'Doe', 'Denver');
+
+USE [Sharding];
+GO
+
+-- VerticalShard1 stores ID, FirstName, LastName
+CREATE TABLE VerticalShard1 (
+    CustomerId INT NOT NULL PRIMARY KEY,
+    FirstName NVARCHAR(50) NULL,
+    LastName NVARCHAR(50) NULL
+);
+GO
+
+-- VerticalShard2 stores ID, City
+CREATE TABLE VerticalShard2 (
+    CustomerId INT NOT NULL PRIMARY KEY,
+    City NVARCHAR(50) NULL
+);
+GO
+
