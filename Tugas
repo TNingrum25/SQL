@@ -21,3 +21,15 @@ CREATE TABLE VerticalShard2 (
 );
 GO
 
+
+
+INSERT INTO VerticalShard1(CustomerId, FirstName, LastName)
+SELECT CustomerId, FirstName, LastName
+FROM OriginalTable;
+
+
+
+INSERT INTO VerticalShard2(CustomerId, City)
+SELECT CustomerId, City
+FROM OriginalTable;
+
