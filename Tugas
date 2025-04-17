@@ -96,3 +96,19 @@ set SalesQuota = Null
 where BusinessEntityID = 274;
 
 
+CREATE TRIGGER trg_InsertToPhoenixShard
+ON OriginalTable
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO ShardTable_Phoenix (CustomerId, FirstName, LastName, City)
+    SELECT CustomerId, FirstName, LastName, City
+    FROM inserted
+    WHERE City = 'Phoenix';
+END;
+
+INSERT INTO OriginalTable VALUES (6, 'Lana', 'Smith', 'Phoenix');
+
+SELECT * FROM ShardTable_Phoenix;
