@@ -127,3 +127,37 @@ SET LastName = 'Maheswari'
 WHERE CustomerId = 5;
 
 DROP TRIGGER trigger_name;
+
+
+CREATE TRIGGER trg_UpdateHorizontalShard
+ON OriginalTable
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Update HorizontalShard1 for LastName starting with A or B
+    UPDATE s1
+    SET 
+        s1.FirstName = i.FirstName,
+        s1.LastName = i.LastName,
+        s1.City = i.City
+    FROM HorizontalShard1 s1
+    INNER JOIN inserted i ON s1.CustomerId = i.CustomerId
+    WHERE LEFT(i.LastName, 1) IN ('A', 'B');
+
+    -- Update HorizontalShard2 for LastName starting with C or D
+    UPDATE s2
+    SET 
+        s2.FirstName = i.FirstName,
+        s2.LastName = i.LastName,
+        s2.City = i.City
+    FROM HorizontalShard2 s2
+    INNER JOIN inserted i ON s2.CustomerId = i.CustomerId
+    WHERE LEFT(i.LastName, 1) IN ('C', 'D');
+END;
+
+
+UPDATE OriginalTable
+SET City = 'Dallas'
+WHERE CustomerId = 2;
