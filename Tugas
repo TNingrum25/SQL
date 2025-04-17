@@ -126,3 +126,4 @@ UPDATE OriginalTable
 SET LastName = 'Maheswari'
 WHERE CustomerId = 5;
 
+DROP TRIGGER trigger_name;
