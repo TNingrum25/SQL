@@ -112,3 +112,12 @@ END;
 INSERT INTO OriginalTable VALUES (6, 'Lana', 'Smith', 'Phoenix');
 
 SELECT * FROM ShardTable_Phoenix;
+
+
+
+CREATE TABLE ShardTable_Phoenix (
+    CustomerId INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    City VARCHAR(50)
+);
