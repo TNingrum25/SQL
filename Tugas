@@ -121,3 +121,8 @@ CREATE TABLE ShardTable_Phoenix (
     LastName VARCHAR(50),
     City VARCHAR(50)
 );
+
+UPDATE OriginalTable
+SET LastName = 'Maheswari'
+WHERE CustomerId = 5;
+
