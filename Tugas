@@ -161,3 +161,23 @@ END;
 UPDATE OriginalTable
 SET City = 'Dallas'
 WHERE CustomerId = 2;
+
+CREATE TRIGGER trg_InsertToHorizontalShards
+ON OriginalTable
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Insert into HorizontalShard1 for LastNames starting with A or B
+    INSERT INTO HorizontalShard1 (CustomerId, FirstName, LastName, City)
+    SELECT CustomerId, FirstName, LastName, City
+    FROM inserted
+    WHERE LEFT(LastName, 1) IN ('A', 'B');
+
+    -- Insert into HorizontalShard2 for LastNames starting with C or D
+    INSERT INTO HorizontalShard2 (CustomerId, FirstName, LastName, City)
+    SELECT CustomerId, FirstName, LastName, City
+    FROM inserted
+    WHERE LEFT(LastName, 1) IN ('C', 'D');
+END;
